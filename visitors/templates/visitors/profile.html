@@ -1,0 +1,40 @@
+{% extends "visitors/base.html" %}
+
+{% block content %}
+<div class="container mt-4" style="max-width:500px;">
+    <h3>Profile</h3>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+
+        <!-- Username -->
+        <div class="mb-3">
+            <label class="form-label">Username</label>
+            <input type="text" name="username" class="form-control"
+                   value="{{ user.username }}" required>
+        </div>
+
+        <!-- Email -->
+        <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="email" name="email" class="form-control"
+                   value="{{ user.email }}" required>
+        </div>
+
+        <!-- Password -->
+        <div class="mb-3">
+            <label class="form-label">New Password</label>
+            <input type="password" name="password" placeholder="New Password (optional)">
+            <small class="text-muted">Leave blank if you don’t want to change</small>
+        </div>
+
+        <button class="btn btn-primary w-100">Update Profile</button>
+    </form>
+</div>
+{% endblock %}

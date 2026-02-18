@@ -1,0 +1,20 @@
+{% load static %}
+
+<div class="sidebar">
+
+    <a href="{% url 'dashboard' %}" class="logo-box">
+        <img src="{% static 'visitors/images/logo.jpg' %}" class="logo-img" alt="Logo">
+        <span class="logo-text">VSS</span>
+    </a>
+
+    <a href="{% url 'dashboard' %}">Dashboard</a>
+    <a href="{% url 'analytics' %}">📊 Analytics</a>
+    <a href="{% url 'generate_report' %}?type=daily">📄 Reports</a>
+    <a href="{% url 'profile' %}">Profile</a>
+    <a href="#">Sub User</a>
+    <a href="#">Department</a>
+    <a href="{% url 'visitor_list' %}">Visitor List</a>
+    <a href="{% url 'employee_list' %}">Employees</a>
+    <a href="{% url 'logout' %}">Logout</a>
+
+</div>

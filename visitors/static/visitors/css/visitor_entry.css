@@ -1,0 +1,185 @@
+/* ================= ROOT VARIABLES ================= */
+:root {
+    --accent-color: #2563eb;
+    --accent-dark: #1e40af;
+    --bg-light: #f4f7fb;
+    --text-main: #1f2937;
+    --border-light: #d1d5db;
+}
+
+/* ================= BASE ================= */
+body {
+    background: linear-gradient(135deg, #f4f7fb, #eef2f7);
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    color: var(--text-main);
+}
+
+/* ================= CARD ================= */
+.entry-card {
+    width: 100%;
+    max-width: 900px;
+    border-radius: 18px;
+    border: none;
+    background: #ffffff;
+    box-shadow: 0 22px 40px rgba(0, 0, 0, 0.08);
+    animation: fadeUp 0.45s ease;
+}
+
+/* ================= HEADER ================= */
+.entry-header {
+    background: linear-gradient(
+        135deg,
+        var(--accent-color),
+        var(--accent-dark)
+    );
+    color: #ffffff;
+    padding: 18px 26px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 18px 18px 0 0;
+}
+
+/* ================= CARD BODY ================= */
+.card-body {
+    padding: 28px;
+}
+
+/* ================= FORM LABELS ================= */
+.form-label {
+    font-weight: 600;
+    font-size: 0.92rem;
+    margin-bottom: 4px;
+    color: #374151;
+}
+
+.form-label .text-danger {
+    font-size: 0.9rem;
+}
+
+/* ================= INPUTS ================= */
+.form-control,
+.form-select,
+textarea {
+    border-radius: 10px;
+    padding: 10px 14px;
+    border: 1px solid var(--border-light);
+    font-size: 0.95rem;
+    transition: all 0.25s ease;
+}
+
+/* Focus */
+.form-control:focus,
+.form-select:focus,
+textarea:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* Invalid */
+.is-invalid {
+    border-color: #dc2626 !important;
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15);
+}
+
+/* ================= FILE INPUT ================= */
+input[type="file"] {
+    padding: 8px;
+    font-size: 0.9rem;
+}
+
+/* ================= CAMERA / PHOTO ================= */
+video {
+    border-radius: 12px;
+    border: 1px solid var(--border-light);
+    background: #000;
+}
+
+#photoPreview {
+    max-height: 220px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 1px solid var(--border-light);
+}
+
+/* ================= SIGNATURE PAD ================= */
+canvas {
+    background: #fff;
+    border-radius: 12px;
+}
+
+/* ================= CHECKBOX ================= */
+.form-check {
+    padding-left: 1.8em;
+}
+
+.form-check-input {
+    width: 1.1em;
+    height: 1.1em;
+    cursor: pointer;
+}
+
+.form-check-label {
+    font-size: 0.9rem;
+    color: #374151;
+}
+
+/* ================= BUTTONS ================= */
+.btn {
+    border-radius: 10px;
+    padding: 9px 20px;
+    font-size: 0.95rem;
+    transition: all 0.25s ease;
+}
+
+.btn-primary {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.25);
+}
+
+.btn-secondary {
+    background-color: #6b7280;
+    border-color: #6b7280;
+}
+
+.btn-secondary:hover {
+    background-color: #4b5563;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-success:hover,
+.btn-outline-dark:hover {
+    transform: translateY(-1px);
+}
+
+/* ================= TEXT ================= */
+.text-muted {
+    font-size: 0.85rem;
+}
+
+/* ================= ANIMATION ================= */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+    .entry-card {
+        margin: 14px;
+    }
+
+    .card-body {
+        padding: 22px;
+    }
+}

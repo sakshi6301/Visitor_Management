@@ -1,0 +1,90 @@
+/* ===== GLOBAL ===== */
+body {
+    background: linear-gradient(135deg, #f8f9fa, #eef2f7);
+    font-family: "Segoe UI", Tahoma, sans-serif;
+}
+
+/* ===== NAVBAR LOGO ===== */
+.logo-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
+
+.logo-img {
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+}
+
+.logo-text {
+    font-weight: 700;
+    font-size: 14px;
+    color: #0d6efd;
+    line-height: 1.2;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+    padding: 12px 0;
+}
+
+.navbar-brand {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+/* ===== HERO SECTION ===== */
+.container.text-center.mt-5 h1 {
+    font-size: 42px;
+    margin-top: 60px;
+}
+
+.container.text-center.mt-5 p {
+    font-size: 16px;
+    max-width: 600px;
+    margin: auto;
+}
+
+/* ===== HERO BUTTONS ===== */
+.container.text-center .btn-lg {
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.container.text-center .btn:hover {
+    transform: translateY(-3px);
+}
+
+/* ===== FEATURES ===== */
+.container.mt-5 .col-md-4 {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+.container.mt-5 .col-md-4:hover {
+    transform: translateY(-6px);
+}
+
+.container.mt-5 h5 {
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+/* spacing between feature cards */
+.container.mt-5 .row {
+    gap: 20px;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    margin-top: 60px;
+    font-size: 14px;
+    color: #6c757d;
+}

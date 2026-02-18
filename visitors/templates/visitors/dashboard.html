@@ -1,0 +1,116 @@
+{% extends 'visitors/base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+
+<h3>Analytics</h3>
+<p class="text-muted">Dashboard</p>
+
+<!-- Alert for Long Staying Visitors -->
+{% if long_staying_visitors %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>⚠️ Alert!</strong> {{ long_staying_visitors.count }} visitor(s) have been inside for more than 4 hours.
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+</div>
+{% endif %}
+
+<div class="row g-3 mt-3">
+
+    <div class="col-md-3">
+        <div class="stat-card blue">
+            <small>Total Today Visitors</small>
+            <h2 id="stat-today">{{ total_today }}</h2>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="stat-card yellow">
+            <small>Total Yesterday Visitor</small>
+            <h2 id="stat-yesterday">{{ total_yesterday }}</h2>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="stat-card green">
+            <small>Total Last 7 Days Visitor</small>
+            <h2 id="stat-7days">{{ total_last_7_days }}</h2>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="stat-card red">
+            <small>Total Visitors Till Day</small>
+            <h2 id="stat-total">{{ total_visitors }}</h2>
+        </div>
+    </div>
+
+</div>
+
+<!-- Recent Visitors -->
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-dark text-white">
+                <h5 class="mb-0">Recent Visitors</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Mobile</th>
+                                <th>Purpose</th>
+                                <th>Entry Time</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for visitor in recent_visitors %}
+                            <tr>
+                                <td>{{ visitor.name }}</td>
+                                <td>{{ visitor.mobile }}</td>
+                                <td>{{ visitor.purpose }}</td>
+                                <td>{{ visitor.entry_time|date:"d M, h:i A" }}</td>
+                                <td>
+                                    {% if visitor.status == 'IN' %}
+                                        <span class="badge bg-success">IN</span>
+                                    {% else %}
+                                        <span class="badge bg-danger">OUT</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="5" class="text-center text-muted">No recent visitors</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Auto-refresh dashboard every 30 seconds
+setInterval(function() {
+    fetch('/api/dashboard-stats/')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('stat-today').textContent = data.total_today;
+            document.getElementById('stat-yesterday').textContent = data.total_yesterday;
+            document.getElementById('stat-7days').textContent = data.total_last_7_days;
+            document.getElementById('stat-total').textContent = data.total_visitors;
+            
+            // Reload page if long staying visitors detected
+            if (data.long_staying_count > 0) {
+                location.reload();
+            }
+        });
+}, 30000);
+</script>
+
+{% endblock %}
